@@ -1,0 +1,1024 @@
+
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[peerreview]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+\usepackage{makecell}
+\usepackage{pbox}
+\usepackage{tabularx}
+\usepackage{vcell}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Ontology-based solutions for Interoperability \\ among Product Lifecycle Management Systems: \\A Systematic Literature Review}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Alvaro~Fraga,
+        Marcela~Vegetti,
+        and~Horacio~Leone% <-this % stops a space
+\thanks{A. Fraga, M. Vegetti and H. Leone were with the Institute
+of Development and Design, CONICET-UTN-FRSF, Santa Fe, Argentina,
+SF, 3000 AR e-mail: (see http://www.ingar.santafe-conicet.gov.ar/).}% <-this % stops a space
+\thanks{Manuscript received August 27, 2019; revised July 11, 2020.}}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Journal of Industrial Information Integration} 
+{Fraga \MakeLowercase{\textit{et al.}}}
+
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+In the last years, globalization impacts on the competitive capacity of industries forcing them to integrate their productive processes with other facilities geographically distributed. Hence, information systems supporting such processes should interoperate. Attention has been devoted to the development of ontology-based solutions, which are meant to tackle issues from inconsistency to semantic interoperability and knowledge reusability. Therefore, this paper looked up towards the available technology, models and how ontology-based solutions could interact with manufacture industry environment to achieve the semantic interoperability among industrial information systems. Through a systematic literature review, this paper envisions to identify what are the most relevant elements to be considered in the development of an ontology-based solution and how these solutions were deployed in the industry. This research was concerned about 54 studies analyzed in the process aligned with the specific requirements of the research questions that we have stated in this paper. The most relevant results to highlight show that ontology-based solutions can be undertaken to employ OWL as ontology language, Protégé as the ontology modelling tool, Jena as application programming interface to interact with the built ontology, and different standards from the International Organization for Standardization Technical Committee 184 Subcommittee 4 or 5 to get the foundational concepts, axioms, and relationships to develop the knowledge base. We believe the findings of this study can supply an important contribution to the practitioners and researchers as it provides them with useful information about the different projects and choices to undertake projects in the industrial ontology application domain.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+product lifecycle management, interoperability, ontology, roles of ontology, review
+\end{IEEEkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{T}{he} constant and irreversible influence of globalization has generated many development scenarios for industries with greater competitive pressure. This situation encouraged manufacturing companies to embrace new strategies to reduce product development lifecycle times for the production of new products without quality being affected \cite{}. One of these strategies has been made a competitive advantage from collaborative interaction between suppliers, customers and partners geographically distributed to integrate their productive processes. This collaboration aligned with the goals of smart factories, which are trying to reach interoperability among every single asset and information system in manufacturing industries \cite{}[5].
+
+
+The Smart Factory concept refers to the implementation of Industry 4.0 approach in manufacturing, which requires information and knowledge sharing between industrial information systems across the enterprise frontier \cite{}[6]. To provide this information exchange is necessary to deploy a functional data integration  \cite{}[7], [8], which involves employing a common vocabulary and data models shared between information systems. The lack of a common language may lead to interoperability issues. 
+
+
+To address interoperability, the International Standard Organization (ISO), one of the biggest standards publishers’ organizations, publishes standards to share consensus-based knowledge to support activities in a wide range of areas. Moreover, the ISO Technical Committee 184 \cite{}[9] put its effort to solve the interoperability problem in product development related domain. The standards developed by this committee cover a variety of areas related to industrial automation and manufacturing system integration, including business modelling, product data exchange, plants, processes, mechanical interfaces, parts catalogues, and physical device control. Although many standards are available and applicable to production management systems at different levels, the joint use of a set of these standards shows some semantic interoperability problems. Among others problems, it is possible to mention the lack of compatibility between the information models and the vocabulary used by each one; the lack of formalization in the definition of concepts that prevents the automatic processing of information \cite{}[10]; multiple definitions of a term, several different terms for referring a single concept. Moreover, some terms may be misinterpreted given the knowledge background and domain expertise that each expert analyzing the standard has \cite{}[11]–[14].
+
+
+According to Chen \cite{}[15] to reach semantic interoperability requires in the first instance to know the formal conceptualization behind the terms handled in each domain involved. Since its Since its appearance, ontological approaches have offered techniques and strategies that favor the consolidation of shared meaning in computational form. So, ontologies began to be considered as powerful tools to achieve semantic interoperability.
+
+
+Several researchers such as Kim et al. \cite{}(Kim et al., 2006), Costa et al. \cite{}[17] and Lin et al. \cite{}[18] have pursued ontology-based understandings to solve several semantic and knowledge modelling problems in product design and manufacturing. An important observation is that most of the related works tend to exploit the Web Ontology Language (OWL) \cite{}[19] as ontological formalism. While this is the case, other proposals have used alternative formalisms such as the Knowledge Exchange Format \cite{}(Bock Conrad and Gruninger, 2005; N. Chungoora et al., 2013).
+
+
+Motivated by this perception, the goal of this paper is to outline the overall picture of the use of standards and ontologies in the manufacturing area through a comprehensive review of the literature on the topic in order to identify the main overarching themes discussed in the past. To attend this goal, it is intended to create a clear and objective way of visualizing the results instigating those who intend to follow this line of research. At the beginning of the research, it was noticed that this field is very broad, and authors need to find a way to promote adequate visibility of the results, focusing on the extensions of the areas that manufacturing industries interact with the product development lifecycle.
+
+
+Wherefore described by Kitchenham et al. \cite{}[21] a systematic literature review allows identifying, assess, and interpret relevant material related to answer specific research questions. So, a systematic literature review (SLR) creates an objective summary of evidence about technology, practice, etc. Moreover, a qualitative review, a sub-classification of SLR, is meant to address questions about the specific use of technology, and it is more likely to be used when researchers want to study the barrier to adopt a certain technology, hence this kind of review look at research studies about methodologies and not only practices. 
+
+
+In this paper, authors aim to give a detailed description of current technological problems and solutions related to standards formalization through ontologies to set up collaborative product development strategies between geographically distributed industries, the current adoption level and the issues and limitations that this technology arise i.e. a qualitative systematic review which emphasizes the specific use of technology in a domain. Furthermore, this paper pretends to be a guideline to make the first steps towards this area for new researchers.
+
+
+For all the reason above, the research questions that this review aimed to answer are the following:
+\begin{enumerate}
+\item Which technologies employ the ontology-based solutions already implemented in the industrial environments?
+\item What types of problems solve or tackle ontology-based systems in industries?
+\item How the ontology-based proposals are presented? Are they mature enough? 
+\item Which standards or family of standards were considered to solve the semantic interoperability problem in the industry?
+\begin{enumerate}
+\item Were these standards formalized or adapted as ontologies?
+\item Were these ontologies used in the development of an ontology-based system?
+\end{enumerate}
+\item Which other models rather than the standard formalizations or the ad-hoc ontologies did academia use to develop a knowledge base for product lifecycle management systems?
+\end{enumerate}
+
+
+This paper is organized as followed: section 2 introduces theoretical background information related to enterprise, integration, interoperability, ontology, and other related definitions. A summary of similar systematic and mapping reviews related to the mentioned topics is also shown in section 2. Section 3 describes the research method adopted and the review protocol. Section 4 presents the article selection process and a brief description of the selected studies. Section 5 describes a synthesis of the data collected from those studies in light of the research questions. In Section 6, we discuss some points identified during data analysis, which may be useful for the research agenda in Ontology-based solutions to reach semantic interoperability. Finally, in Section 7, we state the conclusions and future works.
+
+
+\section{Theoretical Background}
+
+Defining every core term in the domain of this research study is crucial to understand the context. Therefore, terms like product lifecycle management, enterprise, integration, and interoperability as well as ontology are introduced in the following paragraphs. 
+
+
+According to Giachetti \cite{}[22], an enterprise is “a complex, socio-technical system that comprises interdependent resources of people, information, and technology that must interact with each other and their environment in support of a common mission”. Also, the International Standard Organization define enterprise as “one or more organizations sharing a definite mission, goals, and objectives to offer an output such as a product or a service” \cite{}[23]. Hence, enterprise integration can be defined as the process of ensuring the interaction between enterprise entities necessary to achieve domain objectives \cite{}[24]. Enterprise integration can be approached in various manners and at various levels \cite{}[25]. It is possible to consider the following approaches: (i) physical integration (interconnection of devices, numerical control machines via computer networks), (ii) application integration (integration of software applications and database systems) and (iii) business integration (coordination of functions that manage, control and monitor business processes). Some other approaches also consider (i) integration through enterprise modelling (for example through the use of a consistent modelling framework) \cite{}[26] and (ii) integration as a methodological approach to achieve consistent enterprise-wide decision-making. Particularly, in manufacturing industries, the decision-making process is mainly related to product lifecycle management. \cite{}[27] defines this cycle as a strategic business approach that supports all the phases through which a product goes from its first conceptualization to its final disposal, providing a unique and timed product data source. Product lifecycle management (PLM) enables organizations to collaborate within and across the extended enterprise by integrating people, processes, and technologies as well as by assuring information consistency, traceability, and long-term archiving. More precisely, an effective PLM involves any employee within an industrial organization to perform as it has a full understanding of the product and its environments throughout their lifecycle \cite{}[28]. A PLM system is ideally an information processing system, which integrates the core processes of a manufacturing company and connects, integrates and controls the business processes of the company through the products to be made and the information closely related to the products.
+
+
+Moreover, we can state that PLM systems provided interoperability among the product lifecycle phases and involved systems that manipulate the product information. Interoperability can be defined as the ability of two systems (or more) to communicate, cooperate and exchange data and services despite the differences in their languages, implementations and execution environments or abstraction models \cite{}[29]. 
+According to \cite{}[30], a system is interoperable only when it meets at the same time the three levels of interoperability, which are: 
+
+
+\begin{itemize}
+\item The technical level that is related to the standardization of hardware and software interfaces. 
+\item The semantic level concerning the understanding of the business level between the different actors. 
+\item The organizational level which involves the identification of the inter-actors and organizational procedures. 
+\end{itemize}
+
+The semantic level of interoperability, which is what concern us, lies in reaching a common understating of business entities. Ontologies are the great candidates to provide a shared conceptualization of the vocabulary and used data models in enterprises. 
+
+
+An ontology is an explicit specification of a conceptualization \cite{}[31]. The ontology includes definitions of concepts and the indication of how these concepts are inter-related, which collectively impose a structure on the domain and constrain the possible interpretations of terms \cite{}[32]. A more formal definition is the one proposed by de Reuver et al.  \cite{}[33], "An ontology is the conceptual and terminological description of shared knowledge about a specific domain. Leaving aside the formalization and interoperability of applications, this is no more than the main competence of the term: to make improvements in communication using the same system in terms of terminology and concept". 
+
+
+Those previously defined terms set the ground to the present study, which aims to provide a roadmap and guidelines in the development of ontology-based solutions in the manufacturing domain. The next section brings an overview of related studies, which complement this review, and also introduces the research questions about the manufacturing and ontology domains that these related studies propose.
+
+\section{Related Studies}
+
+This section gives an overview of some relevant reviews that have focused on industrial interoperability, ontologies, and product lifecycle management. These studies are summarized in Table 1 and, then a brief overview of them is provided. The mentioned table presents for each article its title, publication year; the Journal or conference proceedings where the study has been published and, finally, the research questions it reports. 
+
+\begin{table*}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5cm} p{1cm} p{4cm} p{5cm}}
+\hline
+Title & Year & Journal/Conference & Research Questions \\ \hline
+A systematic review to merge discourses: Interoperability, integration and cyber-physical systems \cite{}[34]  &        2018   & Journal of Industrial Information Integration &  RQ1: What is the main focus of research on interoperability assessment? \newline
+RQ2: How can existing approaches for interoperability assessment be adapted to support tool integration during CPS development? \\
+Semantic interoperability for an integrated product development process: A systematic literature review \cite{}[35]   &    2017       &   International Journal of Production Research & RQ1: What are the recent papers regarding the formalization of heterogeneous information and product requirements (constraints) to provide a seamless semantic interoperability across PDP? \newline
+RQ2: What are the recent papers regarding the formalization of information relationships from multiple domains to support a seamless semantic interoperability across PDP?
+    \\ 
+Approaches for integration in system of systems: A systematic review \cite{}[36]    &       2016    &   4th International Workshop on Software Engineering for Systems-of-Systems &    RQ1: How has the integration between Constituent systems of an SoS been investigated? \newline
+RQ2: In this type of study, which kind of tool has been used to aid in the integration of the constituent systems? \\
+What does PLMS (product lifecycle management systems) manage: Data or documents? Complementarity and contingency for SMEs \cite{}[28] & 2016 & Computers in Industry & 
+RQ1: What information needs do these partial PLMS satisfy? \newline
+RQ2: what advantages and disadvantages might these two partial PLMS types offer for information integration? \newline
+RQ3: What effects on usage and practices might partial PLMS have during the detailed design phase? \\ 
+Ontologies in the context of product lifecycle management: State of the art literature review \cite{}[37] & 2015 & International Journal of Production Research & 
+RQ1: What is ontology? \newline
+RQ2: What challenges have been addressed so far? \newline
+RQ3: What role does ontology play? \newline
+RQ4: Do we really need ontology? \\
+Enterprise ontologies: Open issues and the state of research: A systematic literature review \cite{}[38] & 2014 & International Conference on Knowledge Engineering and Ontology Development & 
+RQ1: How much research activity on the field of EO has there been since 2007? \newline
+RQ2: What research topics are being investigated? \newline
+RQ3: What research approaches are being used? \newline
+RQ4: What applications are seen for EOs? \newline
+RQ5: Which topics regarding EO need further research according to the authors? \\
+Improving the interoperability of industrial information systems with description logic-based models-The state of the art [1] & 2013 & Computers in Industry & RQ1: What kinds of PLM issues lead to the use of inference models, with which scope and in which fields? \newline
+RQ2: Why are inference ontologies relevant for PLM applications? \newline
+RQ3: How are they used in current research papers? \\
+Foundational Ontologies for Semantic Integration in EAI: A Systematic Literature Review \cite{}[39] & 2013 & IFIP Advances in Information and Communication Technology & RQ1: How have foundational ontologies been used as part of EAI approaches? \newline
+RQ2: Do the studies use the ontologies at development time, at run time or both? \newline
+RQ3: Do the studies follow a systematic approach for performing the integration project? (Do they adopt or propose a method or a process model defining activities, inputs, outputs, guidelines, etc.?)
+    \\\hline
+    
+\end{tabular}
+\end{table*}
+
+Gürdür and Asplund [34] have reviewed studies related to interoperability assessment models. These authors have provided many definitions of the term interoperability and, also a classification of different interoperability types. They suggest that the most interesting areas in which these models can be applied are companies or industries, particularly in the context of cyber physical systems (CPS). In their work, Gürdür and Asplund have classified interoperability assessment models following the approach that has been presented by Ford  [40], which classifies interoperability assessment models into maturity and non-maturity categories.  Maturities models are those organized by levels and non-maturities ones are not organized at all. These authors analyze in depth four assessment models that they consider as the most important: Levels of Information Systems Interoperability (LISI), Organizational Interoperability Agility Model (OIM), Level of Conceptual Interoperability Model (LCIM) and System of Systems Interoperability (SoSI). All these models find their limitation in focusing on partial aspects of interoperability, i.e. Technological, Organizational, Conceptual and Operational respectively. Likewise, these four models have complex metrics and limited support for decision making. Regarding the analysis of the models, the only one that takes semantic interoperability into account at a maturity level is the LCIM. The purpose of cited work is to review the mentioned models to extract concepts that are valuables in the context of CPS integration tools.
+
+
+In turn, Szejka et al. [35] propose a systematic literature review to identify the main proposals and milestones of the articles that address semantic interoperability as a research focus. These authors have taken as a premise that semantic interoperability is achievable when the information and knowledge captured can be effectively exchanged in a collaborative environment without losing the meaning of information, knowledge, and intention during this process [11]. This review aims to analyze the different approaches to reach semantic interoperability among the phases of the product development process. This research looks for a general method or approach to tackle the semantic obstacles, i.e. hard-to-formalize vocabulary, that involves the product domain process (PDP) considering such as the malleability, geometric dimension and tolerance, function, material and the resource of mechanized. Szejka et al. (2017) have conducted their review studying 14 articles and 8 authors from a batch of 3607 scientific studies. In their work these authors have concluded that there is not a general or integrated semantic interoperability approach to solves the relationship among domain, PDP and Product Restrictions. The research works that have been analyzed in (Szejka et al., 2017) revealed several solutions based on semantic mapping; ontology; semantic annotations; data structures and relationships; as well as features model, applicable to the particular needs of each research workgroup. The limitations that this study has detected helped to identify problems and guide further studies. 
+
+
+Vargas et al. [36] have investigated the state-of-the-art System of System integration (SoSI) and the software engineering methods that aid in the integration of the SoS constituent systems (CS). Most studies that have been selected in the mentioned review describe individuals and teams who have worked in isolation to develop solutions to certain problems in this area without the widespread adoption of an integration approach. The mentioned authors have also identified the following issues as the main difficulties that appear during the integration process of the SoS constituent systems: i) management to successfully integrate individual systems to the SoS; ii) single modelling representing the SoS as a whole; iii) the complexity of interactions between the SoS entities, due to the diversity and heterogeneity of the CS’s and the complexity of the CS’s because of the inability to fully grasp which are the features of those systems; iv) the heterogeneity of the CS’s that lays to a low collaboration and the misalignment of the goals of the systems; v) the protocols and interfaces that define the systems are not well enough to provide efficient communication; vi) the scalability of the SoS as a whole; vii) the documentation of legacy systems are not always available, or complete; and viii) the lack of script or tutorials that help software engineers to practice the system integration in the context of SoS. The authors of this research have also concluded that 25\% of the selected paper mentions the use of tools that facilitate integration, like FireScrum, Mind mapping tool, RDL (Requirements Description Language), SENSE, UPPAAL, DEVS, and M-Model.
+
+
+Although their study has detected an increased number of contributions related from 2003 and a significant increase from 2006, Vargas et al. have observed that SoSI is a topic of relevance, but it is still an area of research that requires deeper studies. They also mentioned that there are some approaches that uses Service Oriented Architecture SOA to integrate CSs of an SoS. This is interesting because when taking into account the technologies and tools used to integrate heterogeneous systems Vargas et al. have already studied the topic but in the context of SoS and their CS. 
+
+
+David and Rowe [28] review has sought to identify the advantages and disadvantages of the different types of PLM that exist and has addressed the possible uses of these systems in the detailed design phase. The main aim of the mentioned proposal has been to provide Small Medium Enterprises (SME) with support in the selection and implementation of a PLM application that best suits its needs. These authors distinguish two types of PLM solutions. One type is oriented to the documents management and the another focuses on relational data management. Both solution types have very different properties. Therefore, this research focuses on the analysis of each proposed solution, whether document-oriented or data-oriented to which an SME having limited resources should implement its PLMS. 
+
+
+As far as the method is concerned, David and Rowe proposal does not detail the selection process of the articles addressed but rather acts as a complement to their previous work [41].
+
+
+El Kadiri and Kiritsis [37] have presented a state-of-the-art study of PLM system integration issues highlighting the objectives of ontologies in this context. The most relevant approaches that [37] have identified from the selected articles in their work are: i) to provide a structure of entities, their properties, relationships and axioms of a specific domain in different levels of granularity, and ii) to serve as a reference point for designs to extract systems specifications. Furthermore, El Kadiri and Kiritsis have stated that the limitations of the analyzed ontology-based solutions include lack of harmonization and normalization; deficiency in expressiveness; absence of completeness. In addition, they have also observed that the roles played by these solutions were not exclusively related to the problem of system integration, but these solutions have also been employed for knowledge modelling and decision making.
+
+
+Leinweber et al. [38] have make a non-exhaustive revision, which includes articles published between 2007 and 2013 about business ontologies. According to this article, a business ontology is a formal and explicit specification of a shared conceptualization among a community of people of an enterprise (or a part of it). The mentioned review includes static, kinematic, and dynamic aspects. The review has shown that most of the papers’ content is related to ontology development or ontology particular uses. Other applications that have been found in this review are supportive tools for information system, as well as, mapping and modelling tools and frameworks. It is also important to mention that Leinweber et al. have observed that ontologies can contribute to the management of a company’s knowledge and to the translation or information mapping. Another important fact these authors have highlighted is that business ontologies can be employed to provide a collaboration artifact among companies and to support business processes. The authors of this paper have also stressed that there is a lack of deepening of validation approaches, business values, and collaboration through semantic synchronization.
+
+
+Fortineau et al. [1] have propose a state-of-the-art review based on articles related to ontologies that are applied to product life cycle management. This research is limited to inference ontologies, i.e. ontologies that allow reasoning. This work focuses on the semantic interoperability problem and including an analysis of an ad hoc product model. Regarding its method, Fortineau et al. paper does not present it in detail. They have only stated that 28 articles published between 2004 and 2012 were analyzed. These authors clustered the models that have been proposed in the analyzed studies considering three dimensions: i) the product lifecycle stage, ii) the granularity and the scope of the model, and iii) the focus of the model: product, process or service. The authors of this review highlight that the benefits of using ontologies in PLM applications are:
+
+
+\begin{itemize}
+\item Integration and completeness
+\item Embedded intelligence
+\item Dynamism and flexibility
+\end{itemize}
+
+Fortineau et al. found that the ontologies presented in the analyzed proposal can improve interoperability, especially as an interface tool, through specific modules or layered solutions and, that inference ontologies let see different points of view (or vocabularies) and describe them in a global perspective. Hence, industries can structure information from many sources to make it reusable. 
+
+
+Nardi et al. [39] have reviewed a few proposals based on foundational ontologies for integration between companies, particularly speaking of semantic interoperability among information systems. The foundational ontologies are a kind of (meta)ontology, independent of a problem or domain, that describes a set of real-world categories. These authors have managed to classify the application of foundational ontologies as (i) direct (reusing existent ontology); (ii) indirect (creating new ontologies inspired by other base ontologies) or (iii) mixed. At the same time, the mentioned review has emphasized that the use of ontologies can be considered, at the development time, as an artifact that provides a mapping between concepts, and later, at execution time as a support for the application of rules and restrictions. Nardi et al. have investigated if the studied papers use any kind of systematic method in the solution development and, finally, they have concluded that there were only ad-hoc methodologies.
+
+
+
+Although many researchers have already studied ontologies in product lifecycle management as systematic literature reviews [35], none of them presents a deep analysis of the deployed solutions showing available technologies and standards. There is no proposal that mentions how mature are the ontologies-based solutions and how they overcome the semantic interoperability problems in the manufacturing industries. 
+
+
+It should be noted that despite all the efforts and works introduced in this section none of them focuses on the use of technology and how this new technology impacts on the industry. There is no proposal that mentions how mature are the ontologies-based solutions and how they overcome the semantic interoperability problems in the manufacturing industries. Moreover, these articles show neither the conceptual validation of these ontology models nor the impact they have, once they have been implemented in industries. Hence, in this article, we will focus on providing approaches to develop ontology-based solutions, identifying models and standards to be considered to build an ontology in the manufacturing industry domain. Our intention is to identify how far formalized standards or standard-based ontologies succeeded in establishing implemented solutions into industries.
+
+
+Next section describes the methodological issues related to the review that is presented in this article. The research method along with the research questions, inclusion and exclusion criteria to filter studies are introduced. Also, a quality assessment filter is described to retain only the most relevant works.
+
+
+\section{Research Method}
+
+This section describes the process involved in conducting the Systematic Literature Review (SLR)  proposed in this article following the guidelines developed by Kitchenham et al. [21]. An SLR is a process for extracting, aggregating and synthesizing data from primary studies in order to answer a set of specific research questions and generate a secondary study as a result. SLR employs inclusion and exclusion criteria to filter the research works that will be included in the review. Furthermore, we incorporate a complementary guideline described by Wester and Watson [42] as well as the use of the snowballing technique by Wohlin and Prikladnicki [43]. Also, we considered the recommendations on the importance to include manual target search on popular venues, authors, journals as appeared in [44].
+
+
+Regarding the proposal of Kitchenham et al. [21], an SLR involves three phases: i) planning, ii) conducting and iii) documenting or reporting the review (Fig. 1). Planning involves the set-up activities to make an SLR, which involves defining the research question, the search protocol, and a validation protocol. Conducting the review is based on searching and filtering the studies, data extraction, and schematization. Documenting is the final phase and involves writing up the results, answering the research questions, making classification and highlighting the future or potential trends.
+
+
+
+\subsection{Objectives and Research Questions}
+
+This section states the objective of the literature review that is presented in this article and the research questions that guide it. 
+
+
+This systematic literature review started with the development of the PICOC matrix [45]. This matrix, which is presented in Table 2, has helped to define the research questions around five elements: Population, Intervention, Comparison, Outcomes, and Context. The first two elements identify the entities to be included in the search and the way such elements interact, respectively. Comparison issues represent alternatives way of interaction. The possible results of the search and its domain are specified by the Outcomes and Context. Starting with the population element of the matrix we have included standards, ontologies, ontology-based systems, PLM systems, and product data models as the population of our search. The intervention elements of the matrix are the moderator and mediator agents of the ontology-based industrial information systems. The Ontology-based systems that are not inspired in standards have been stated as the comparison element. As outcomes, we expected to extract the usability and technology of the ontology-based systems in product lifecycle management. Finally, regarding the context of our research question are the reviews of ontology-based systems approaches inspired by standards or simple models and their successes in implementation.
+
+
+The study has been conducted in the scope of a Collaborative Manufacturing and Ontologies project. So, its goal derives from the needs of such a project. Collaborative product development across the geographically distributed enterprise must be settled up to empower the company’s production processes to remain competitive in the new industrial revolution. This collaboration means sharing knowledge between heterogeneous information systems. So, Enterprise collaboration encourages reaching interoperability at a conceptual level, i.e. semantic interoperability. To achieve semantic interoperability, it is necessary to know the formal conceptualization that exists behind the terms used in each domain and integrate them. For this purpose, a standardized data format is a prerequisite, i.e., an appropriate consensus of the term’s formalization is needed. The use of standards becomes a suitable option. Although the use of standards it seems to be the appropriate option, in practice, industries employ different families of standard having different vocabularies causing new semantic discrepancies. So, the use of standards to get the semantic interoperability is not useful as it expected. Although, ontologies have been proposed by the academia to deal with this type of interoperability, their application in manufacturing industries is still uncertain. For that reason, the present article aims to explore the research works in the academia to review the combined use of standards and ontologies applied to the design and implementation of product lifecycle management systems that support semantic interoperability. Reaching such type of integration allows PLM systems to achieve effective and efficient collaborative product development across geographically distributed enterprises.
+
+
+
+As result of the foregoing, we formulated the following research questions:
+
+\begin{enumerate}
+\item Which technologies employ the ontology-based solutions already implemented in the industrial environments?
+\item What types of problems solve or tackle ontology-based systems in industries?
+\item How the ontology-based proposals are presented? Are they mature enough? 
+\item Which standards or family of standards were considered to solve the semantic interoperability problem in the industry?
+\begin{enumerate}
+\item Were these standards formalized or adapted as ontologies?
+\item Were these ontologies used in the development of an ontology-based system?
+\end{enumerate}
+\item Which other models rather than the standard formalizations or the ad-hoc ontologies did academia use to develop a knowledge base for product lifecycle management systems?
+\end{enumerate}
+
+
+The primary focus of the SLR that is presented in this article is to understand the used technology to build ontology-based systems that act as mediators to accomplish a collaborative production process between industries i.e. a qualitative systematic review which emphasize the specific use of technology in a domain.  The following section introduces the search strategy that has guided our review.
+
+
+\subsection{Search Strategy}
+
+
+The study that is presented in this article has been conducted using four different databases: Scopus, IEEExplore, ScienceDirect, and SpringerLink. The generic search string that has been defined is: "standard*" AND ("OWL" OR "ontolog*" OR "semantic interoperability") AND ("product *" OR "CAX" OR "plm" OR "computer-aided *") AND ("manufactur*" OR "enterprise*" OR "industr*"). In order to select additional relevant studies, the snowballing technique [45] was employed. This technique is also mentioned by Kitcheman [21] as a source of alternative inputs to the research. In addition, inclusion and exclusion criteria have been defined in order to select which research studies should be included, or not, in the review.  
+
+
+
+The defined inclusion criteria are:
+
+
+\begin{enumerate}
+    \item Studies from 2009 to 2018. This date was defined because 2009 was the year of Ontology Web language 2.0 release;
+    \item Studies in the English language; 
+    \item Studies related to the search string defined in title, keywords and abstract; 
+    \item Primary studies.
+\end{enumerate}
+
+The exclusion criteria that have been proposed are:
+
+
+\begin{enumerate}
+\item The primary study is not labelled as a paper published in journal or conference proceedings;
+\item Duplicated papers; 
+\item Secondary studies;
+\item Non-English written papers;
+\item Specific Domain papers;
+\item The redundant papers of the same author.
+\end{enumerate}
+
+
+\subsection{Quality Assessment}
+
+The quality assessment criteria are an essential part of a systematic literature review. They provide a filter to identify and enhance the value of the research studies [21]. We reused some questions from the published literature [21], [46], [47] to outline seven closed-ended questions, stated in Table 3. Every article must be tested by the above-mentioned questions and when a negative answer is found the work must be excluded from the review, due to a minimum threshold.
+
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c}
+        Item & Answer \\
+         & 
+    \end{tabular}
+    \caption{Quality Assessment Checklist}
+    \label{tab:my_label}
+\end{table}
+
+
+\subsection{Data Extraction}
+
+
+The data schema plan is designed to record the most relevant data from the studies, in order to facilitate the analysis and answer every research question. The data schema is shown in Table 4, for every study the data that have been collected was: title, authors, year, publication type, publication source, database, the used technology, standard formalization, the domain of application and where the proposal evaluation was carried out (academy or industry).
+
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c}
+         &  \\
+         & 
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+
+
+\section{Results}
+
+
+This section presents the results that were obtained after the execution of the conducting phase of this study, following the aforementioned search strategy. As Fig. 2 shows, this phase involves the following tasks: i) the identification of papers from the database or search engine; ii) the studies selection, the duplicate articles deletion and the application of inclusion and exclusion criteria; iii) the data extraction and quality assessment filtering and, finally, iv) the analysis and synthesis of the remained studies, which lead us to answer the research questions. 
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+
+
+\subsection{Search Results}
+
+
+Once the search engine has been queried, the selection process was performed for identifying the relevant papers for the systematic review. It is important to highlight that the search string mentioned in the previous section is too general and this generality may influence the search results because each selected engine uses a different syntax for expressing the string. So, such a general search string has been manually written using the particular syntax of each engine.  Once obtaining the result of the query executions, the results that have been obtained from all of them were merged. Table 5 presents the papers that were retrieved from the search engines by executing the queries. The first column of the mentioned table indicates the knowledge base where the search was carried out. The second column shows the number of studies retrieved by the query execution in each source. The Third column indicates the amount of papers left after removing the duplicate studies and filtering by the inclusion and exclusion criteria. Finally, the fourth column represents the number of studies that were excluded from the systematic review. It can be mentioned that a total of 116 studies were kept after this step. The SpringerLink search engine did not perform a good search based on the search string retrieving a lot of non-related papers. Also, ScienceDirect did not retrieve many studies, meanwhile, SCOPUS returned 194 studies and a 60\% were excluded. IEEE gave us 64 studies where approximately 36\% passed this step. It is important to note that in the cases of duplicate studies, the article from SCOPUS is included and the ones from other sources are omitted from the study.
+
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c}
+         &  \\
+         & 
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+
+
+Table 6 shows the papers finally included in our analysis, after being filtered once more by the quality assessment criteria. The table holds in the second column the same values as the third column in Table 5. Additionally, it can be noted that the Snowballing backward technique was applied in this step and several studies, i.e. 54 research works, were added using the reference section from the 116 papers left by the previous filtering process. The fifth column, i.e. the one named “Selected after reading”, presents the studies selected for further analysis after been read. Fig. 3 summarized the selection process from the search engine and the snowballing technique.  
+
+
+Fig. 4, shows the studies percentage finally selected from the search engines, where Scopus represents around 52\% of the remained papers being the best search engine and IEEExplorer the second with 22\%. 
+All included references are listed in the Appendix A section.
+
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c}
+         &  \\
+         & 
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+
+
+\subsection{Overview of the selected papers}
+
+
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+\appendices
+\section{Proof of the First Zonklar Equation}
+Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+\section{}
+Appendix two text goes here.
+
+
+% use section* for acknowledgment
+\section*{Acknowledgment}
+
+
+The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+\cite{IEEEexample:IEEEwebsite}
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+\bibliography{IEEEexample}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+\begin{IEEEbiography}{Michael Shell}
+Biography text here.
+\end{IEEEbiography}
+
+% if you will not have a photo at all:
+\begin{IEEEbiographynophoto}{John Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+\begin{IEEEbiographynophoto}{Jane Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
